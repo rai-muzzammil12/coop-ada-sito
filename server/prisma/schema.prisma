@@ -1,0 +1,116 @@
+// Prisma schema for COOP ADA website
+// Default datasource is SQLite (zero-config, file-based) — perfect for a
+// small business site and for trying the project locally.
+// To use Postgres in production, change "provider" below to "postgresql"
+// and set DATABASE_URL to a postgres connection string. No other code
+// changes are required — Prisma generates the same client either way.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// A single admin account (or a few) that can log into /admin and manage
+// the content below. Passwords are stored hashed (bcrypt), never in plain text.
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+}
+
+// One row per service card shown on the "I nostri servizi" page
+// (Assistenza Domiciliare, Assistenza Ospedaliera, Casa Colf & Governanti...).
+model Service {
+  id          String   @id @default(cuid())
+  order       Int      @default(0)
+  icon        String   @default("supporto") // key into the icon set used by the frontend (legacy, kept for admin form parity)
+  image       String   @default("") // path under /public, e.g. /images/service-domiciliare.jpg
+  title       String
+  description String
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Generic reusable content block, used for the repeatable-card sections that
+// aren't full "services": the 4 "Formula Zero Pensieri" cards, the 9
+// "Compiti dell'operatore" items, and the 2 "Chi siamo" columns. Keeping
+// these as one flexible model (instead of 3 near-identical tables) means the
+// admin panel can manage every one of them with the same UI, filtered by
+// `section`.
+model ContentBlock {
+  id          String   @id @default(cuid())
+  section     String   // "formula" | "compiti" | "chi_siamo"
+  order       Int      @default(0)
+  icon        String?
+  title       String
+  description String
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// A team member / operator profile. Not present as individual cards in the
+// original design, but requested for the CMS so the agency can showcase its
+// staff later without a developer.
+model TeamMember {
+  id        String   @id @default(cuid())
+  order     Int      @default(0)
+  name      String
+  role      String
+  bio       String?
+  photoUrl  String?
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  order     Int      @default(0)
+  authorName String
+  authorRole String?
+  content    String
+  rating     Int      @default(5)
+  published  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+// Every submission from the public "Contatti" form. Viewed and managed
+// (marked handled / deleted) from the admin panel.
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// Singleton row (id is always "main") holding all the small editable pieces
+// of copy that aren't repeatable cards: hero headline, phone number,
+// address, etc. Lets the admin edit top-level text without redeploying.
+model SiteSettings {
+  id                String   @id @default("main")
+  logoUrl           String   @default("/images/logo.jpg")
+  heroImage         String   @default("/images/hero-home.jpg")
+  heroEyebrow       String   @default("PAGINA 1  •  HOME")
+  heroTitleLine1    String   @default("Costruiamo valore")
+  heroTitleLine2    String   @default("insieme.")
+  heroSubtitle      String   @default("La serenità di una cura qualificata per i tuoi cari.")
+  heroBody          String   @default("Offriamo servizi di assistenza alla persona flessibili, personalizzati e a misura della tua famiglia — sollevandoti da ogni pensiero burocratico.")
+  phone             String   @default("+39 3928542330")
+  email             String   @default("coopada.so@gmail.com")
+  address           String   @default("Sede Operativa: Ponte in Valtellina, via Moltoni 23, CAP 23026")
+  partitaIva        String   @default("13460630018")
+  appointmentsNote  String   @default("Riceviamo solo su appuntamento")
+  updatedAt         DateTime @updatedAt
+}

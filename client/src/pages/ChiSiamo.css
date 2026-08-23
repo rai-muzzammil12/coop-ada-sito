@@ -1,0 +1,21 @@
+.chi-siamo__grid {
+  align-items: stretch;
+}
+.chi-siamo__panel {
+  border-radius: var(--radius-md);
+  padding: 40px 36px;
+}
+.chi-siamo__panel h3 {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.chi-siamo__panel--muted {
+  background: var(--color-bg-tint);
+  border: 1px solid var(--color-border);
+}
+.chi-siamo__panel--muted p { color: var(--color-text-muted); }
+.chi-siamo__panel--accent {
+  background: var(--color-ink);
+  color: rgba(255,255,255,0.9);
+}
+.chi-siamo__panel--accent h3 { color: var(--color-white); }

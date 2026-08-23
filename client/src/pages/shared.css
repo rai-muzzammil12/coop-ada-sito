@@ -1,0 +1,163 @@
+.section-head__sub {
+  color: var(--color-text-muted);
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+/* Compiti dell'operatore */
+.icon-circle--sm {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0;
+}
+.compiti__item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.compiti__title {
+  font-size: 15.5px;
+  margin-bottom: 6px;
+}
+.compiti__desc {
+  color: var(--color-text-muted);
+  font-size: 13.8px;
+}
+
+/* Contatti */
+.contatti__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.contatti__title {
+  font-size: clamp(28px, 3.6vw, 38px);
+  margin-top: 14px;
+  margin-bottom: 18px;
+}
+.contatti__lead {
+  color: var(--color-text-muted);
+  max-width: 46ch;
+  margin-bottom: 28px;
+}
+.contatti__facts {
+  display: grid;
+  gap: 16px;
+  margin: 0 0 20px;
+}
+.contatti__facts dt {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-terracotta);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.contatti__facts dd {
+  margin: 0;
+  font-size: 15px;
+}
+.contatti__note {
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-size: 13.5px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.contact-form__field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.contact-form__field input,
+.contact-form__field textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14.5px;
+  resize: vertical;
+}
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  border-color: var(--color-ink);
+}
+.contact-form__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.contact-form__status {
+  font-size: 14px;
+  margin-top: -4px;
+}
+.contact-form__status--ok { color: #2f7a4d; }
+.contact-form__status--error { color: #a8382b; }
+
+@media (max-width: 860px) {
+  .contatti__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Servizi — photo + numbered badge, matching slide 3 */
+.service-card {
+  padding-top: 0;
+  padding-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+}
+.service-card__photo {
+  width: calc(100% + 2px);
+  margin: -1px -1px 20px -1px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+.service-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.service-card .service-card__number {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-terracotta);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin: 0 28px 12px;
+}
+.service-card .card__title {
+  padding: 0 28px;
+}
+.service-card .card__desc {
+  padding: 0 28px;
+}
+
+/* Compiti dell'operatore — icon sits left of the title, per slide 4 */
+.compiti__item .icon-circle {
+  margin-bottom: 0;
+}
+
+/* Invert black-glyph icons (phone/email) to white for use on dark backgrounds */
+.icon-invert {
+  filter: invert(1);
+}
