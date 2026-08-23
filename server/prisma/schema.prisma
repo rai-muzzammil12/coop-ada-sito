@@ -114,3 +114,7 @@ model SiteSettings {
   appointmentsNote  String   @default("Riceviamo solo su appuntamento")
   updatedAt         DateTime @updatedAt
 }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
