@@ -10,7 +10,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -46,7 +46,7 @@ model Service {
 // `section`.
 model ContentBlock {
   id          String   @id @default(cuid())
-  section     String   // "formula" | "compiti" | "chi_siamo"
+  section     String // "formula" | "compiti" | "chi_siamo"
   order       Int      @default(0)
   icon        String?
   title       String
@@ -72,8 +72,8 @@ model TeamMember {
 }
 
 model Testimonial {
-  id        String   @id @default(cuid())
-  order     Int      @default(0)
+  id         String   @id @default(cuid())
+  order      Int      @default(0)
   authorName String
   authorRole String?
   content    String
@@ -99,22 +99,18 @@ model ContactSubmission {
 // of copy that aren't repeatable cards: hero headline, phone number,
 // address, etc. Lets the admin edit top-level text without redeploying.
 model SiteSettings {
-  id                String   @id @default("main")
-  logoUrl           String   @default("/images/logo.jpg")
-  heroImage         String   @default("/images/hero-home.jpg")
-  heroEyebrow       String   @default("PAGINA 1  •  HOME")
-  heroTitleLine1    String   @default("Costruiamo valore")
-  heroTitleLine2    String   @default("insieme.")
-  heroSubtitle      String   @default("La serenità di una cura qualificata per i tuoi cari.")
-  heroBody          String   @default("Offriamo servizi di assistenza alla persona flessibili, personalizzati e a misura della tua famiglia — sollevandoti da ogni pensiero burocratico.")
-  phone             String   @default("+39 3928542330")
-  email             String   @default("coopada.so@gmail.com")
-  address           String   @default("Sede Operativa: Ponte in Valtellina, via Moltoni 23, CAP 23026")
-  partitaIva        String   @default("13460630018")
-  appointmentsNote  String   @default("Riceviamo solo su appuntamento")
-  updatedAt         DateTime @updatedAt
-}
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  id               String   @id @default("main")
+  logoUrl          String   @default("/images/logo.jpg")
+  heroImage        String   @default("/images/hero-home.jpg")
+  heroEyebrow      String   @default("PAGINA 1  •  HOME")
+  heroTitleLine1   String   @default("Costruiamo valore")
+  heroTitleLine2   String   @default("insieme.")
+  heroSubtitle     String   @default("La serenità di una cura qualificata per i tuoi cari.")
+  heroBody         String   @default("Offriamo servizi di assistenza alla persona flessibili, personalizzati e a misura della tua famiglia — sollevandoti da ogni pensiero burocratico.")
+  phone            String   @default("+39 3928542330")
+  email            String   @default("coopada.so@gmail.com")
+  address          String   @default("Sede Operativa: Ponte in Valtellina, via Moltoni 23, CAP 23026")
+  partitaIva       String   @default("13460630018")
+  appointmentsNote String   @default("Riceviamo solo su appuntamento")
+  updatedAt        DateTime @updatedAt
 }
