@@ -102,7 +102,7 @@ model SiteSettings {
   id               String   @id @default("main")
   logoUrl          String   @default("/images/logo.jpg")
   heroImage        String   @default("/images/hero-home.jpg")
-  heroEyebrow      String   @default("PAGINA 1  •  HOME")
+  heroEyebrow      String   @default("Assistenza alla persona")
   heroTitleLine1   String   @default("Costruiamo valore")
   heroTitleLine2   String   @default("insieme.")
   heroSubtitle     String   @default("La serenità di una cura qualificata per i tuoi cari.")

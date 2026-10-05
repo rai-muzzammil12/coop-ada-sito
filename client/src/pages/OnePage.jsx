@@ -53,7 +53,7 @@ export default function OnePage() {
       <section id="home" className="hero">
         <div className="container hero__inner">
           <div>
-            <span className="eyebrow">{settings?.heroEyebrow || 'PAGINA 1 • HOME'}</span>
+            <span className="eyebrow">{settings?.heroEyebrow || 'ASSISTENZA ALLA PERSONA'}</span>
             <h1 className="hero__title">
               {settings?.heroTitleLine1 || 'Costruiamo valore'}
               <br />
@@ -79,7 +79,7 @@ export default function OnePage() {
       <section id="formula" className="section section--tint">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Pagina 1.1 • Formula Zero Pensieri</span>
+            <span className="eyebrow">Formula Zero Pensieri</span>
             <h2>
               La tranquillità che cerchi, racchiusa in una{' '}
               <span className="accent-italic">Formula Zero Pensieri</span>.
@@ -108,7 +108,7 @@ export default function OnePage() {
       <section id="chi-siamo" className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Pagina 2 • Chi siamo</span>
+            <span className="eyebrow">Chi siamo</span>
             <h2>Chi siamo.</h2>
           </div>
 
@@ -133,7 +133,7 @@ export default function OnePage() {
       <section id="servizi" className="section section--tint">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Pagina 3 • I nostri servizi</span>
+            <span className="eyebrow">I nostri servizi</span>
             <h2>I nostri servizi.</h2>
             <p className="section-head__sub">
               Assistenza qualificata domiciliare e ospedaliera per anziani, malati e disabili.
@@ -170,7 +170,7 @@ export default function OnePage() {
       <section id="compiti-operatore" className="section">
         <div className="container">
           <div className="section-head">
-            <span className="eyebrow">Pagina 3.1 • Compiti dell&apos;operatore</span>
+            <span className="eyebrow">Compiti dell&apos;operatore</span>
             <h2>Compiti dell&apos;operatore.</h2>
             <p className="section-head__sub">Un supporto completo, ogni giorno.</p>
           </div>
@@ -198,7 +198,7 @@ export default function OnePage() {
       <section id="contatti" className="section section--tint">
         <div className="container contatti__grid">
           <div>
-            <span className="eyebrow">Pagina 4 • Contatti</span>
+            <span className="eyebrow">Contatti</span>
             <h2 className="contatti__title">
               Iniziamo a costruire <span className="accent-italic">il percorso insieme.</span>
             </h2>
